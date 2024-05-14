@@ -1,0 +1,161 @@
+
+
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>To-Do-App</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+   
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <!-- Enlace a Google Fonts para tipos de fuentes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Playpen+Sans:wght@200;300&display=swap"
+        rel="stylesheet">
+
+    <!-- Cargar estilos CSS personalizados desde archivos estáticos -->
+    <link href="/static/css/styles.css" rel="stylesheet">
+    
+    <title>Blog</title>
+</head>
+
+<body class="fondo">
+   
+    
+    <!--inicio barra de navegacion-->
+    <header>
+
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-body-tertiary fixed-top ">
+            <!-- Container wrapper -->
+            <div class="container-fluid">
+                <!-- Toggle button -->
+                <button data-mdb-collapse-init class="navbar-toggler" type="button"
+                    data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fas fa-bars"></i>
+                </button>
+
+                <!-- Collapsible wrapper -->
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <!-- Navbar brand -->
+
+                    <!-- icono de barrra de nav -->
+                    <a class="text-reset me-3" href="#">
+                        <i class="fas fa-blog"></i>
+
+                    </a>
+
+                    <!-- icono de barrra de nav -->
+
+
+
+                    <!-- Left links -->
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="">Home</a>
+                        </li>
+
+                    </ul>
+                    <!-- Left links -->
+                </div>
+                <!-- Collapsible wrapper -->
+
+                <!-- Right elements -->
+                <div class="d-flex align-items-center">
+
+
+
+                    <!-- Avatar -->
+                    <div class="dropdown">
+                        <a data-mdb-dropdown-init class="dropdown-toggle d-flex align-items-center hidden-arrow"
+                            href="#" id="navbarDropdownMenuAvatar" role="button" aria-expanded="false">
+                            <img src="" class="" height="25"
+                                alt="Japan flag" loading="lazy" />
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
+                            <li>
+                                <a class="dropdown-item" href="#">My profile</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#">Settings</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#">Logout</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Right elements -->
+            </div>
+            <!-- Container wrapper -->
+        </nav>
+        <!-- Navbar -->
+
+    </header>
+    <!--fin barra de navegacion-->
+
+
+    
+
+    <!-- comienza contenido -->
+<!-- Extiende la plantilla "base.html" -->
+
+
+    <!-- La clase 'container' establece un ancho máximo en todos los dispositivos y permite un relleno automático. Las clases 'd-flex' y 'justify-content-center' se utilizan para centrar el contenido horizontalmente. 'mt-1' añade un margen superior de 0.25rem (1 rem es igual al tamaño de fuente actual). -->
+    <div class="container d-flex justify-content-center mt-1">
+        <!-- La clase 'text-center' centra el texto y 'text-white' cambia el color del texto a blanco. 'mt-5' añade un margen superior de 3rem. -->
+        <div class="text-center text-black mt-5">
+            <!-- Título de bienvenida. La clase 'mt-5' añade un margen superior de 3rem y 'tipoLetra'  clase personalizada que define la fuente y  'style="font-size: 4em;"' aumenta el tamaño de la fuente a 4 veces el tamaño de fuente actual. -->
+            <h1 class="mt-5 tipoLetra" style="font-size: 4em;">Welcome</h1>
+            <!-- Título de las publicaciones del blog. La clase 'mt-0' elimina el margen superior y 'tipoLetra' clase personalizada que define la fuente  'style="font-size: 3em;"' aumenta el tamaño de la fuente a 3 veces el tamaño de fuente actual. -->
+            <h1 class="mt-0 tipoLetra" style="font-size: 3em;">Blog Posts</h1>
+        </div>
+        <!-- Fin del contenedor principal -->
+    </div>
+
+
+            
+
+            <div class="row d-flex  px-5 mx-5 d-flex justify-content-center">
+                {% for post in post %}          
+                       <!-- fila 1 -->
+                <!-- Aquí, justify-content-center se utiliza junto con d-flex para centrar el contenido de la tarjeta dentro de la columna. Esto significa que la tarjeta se centrará horizontalmente dentro de la columna12. -->
+                <div class="col-lg-3 col-sm-12 mb-2 mb-lg-5 mt-3 mt-lg-5 d-flex justify-content-center ">
+                    <div class="card text-center" style="width: 18rem;">
+                        
+                        <div class="card-body">
+                            <h5 class="card-title">{{ post["title"] }}</h5>
+                            <p class="card-text">{{ post["subtitle"] }}</p>
+
+                           <!-- url_for() llama a la funcion post_details() -->
+                            <a href="{{ url_for('post_details', post_id=post["id"]) }}" class="btn btn-primary">View Blog Details</a>
+                        </div>
+                    </div>
+                </div>
+            
+                {% endfor %}
+            </div>
+
+    
+
+
+
+
+    <!-- comienza footer -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+</body>
+
+
+</html>
